@@ -1,13 +1,13 @@
 /*
  * Pinout keuzes (SuperMini nRF52840):
  *
- * Switch 1  → P0.02
- * Switch 2  → P0.03
- * Switch 3  → P0.28
+ * Switch 1  → P0.17
+ * Switch 2  → P0.20
+ * Switch 3  → P0.22
  *
- * Encoder A (CLK) → P0.29
- * Encoder B (DT)  → P0.30
- * Encoder SW      → P0.31
+ * Encoder A (CLK) → P1.00
+ * Encoder B (DT)  → P0.11
+ * Encoder SW      → P0.24
  *
  * Alle switches zijn direct gewired (geen matrix), met interne pull-up.
  */
@@ -36,18 +36,18 @@
         label = "KSCAN";
 
         input-gpios
-            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* encoder knop P0.31 */
-            , <&gpio0  2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 1     P0.02 */
-            , <&gpio0  3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 2     P0.03 */
-            , <&gpio0 28 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 3     P0.28 */
+            = <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* encoder knop P0.24 */
+            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 1     P0.17 */
+            , <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 2     P0.20 */
+            , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 3     P0.22 */
             ;
     };
 
     encoder: encoder {
         compatible = "alps,ec11";
         label = "ENCODER";
-        a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* CLK P0.29 */
-        b-gpios = <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* DT  P0.30 */
+        a-gpios = <&gpio1 00 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* CLK P1.00 */
+        b-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* DT  P0.11 */
         steps = <80>;
         status = "okay";
     };
