@@ -8,12 +8,13 @@
 
         default_layer {
             bindings = <
-                &kp C_MUTE      /* encoder knop (drukken) */
-                &kp C_VOL_DN    /* switch 1 */
-                &kp C_PP        /* switch 2 */
-                &kp C_VOL_UP    /* switch 3 */
+                &kp C_MUTE      /* encoder knop (drukken) = mute */
+                &kp W           /* switch 1 = W */
+                &kp SPACE       /* switch 2 = Space */
+                &kp UP          /* switch 3 = Pijl omhoog */
             >;
 
+            /* encoder draaien = volume omhoog/omlaag (werkt in GD) */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
