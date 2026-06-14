@@ -1,0 +1,60 @@
+/*
+ * Pinout keuzes (SuperMini nRF52840):
+ *
+ * Switch 1  → P0.02
+ * Switch 2  → P0.03
+ * Switch 3  → P0.28
+ *
+ * Encoder A (CLK) → P0.29
+ * Encoder B (DT)  → P0.30
+ * Encoder SW      → P0.31
+ *
+ * Alle switches zijn direct gewired (geen matrix), met interne pull-up.
+ */
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <4>;
+        rows = <1>;
+
+        /* volgorde: encoder_sw, switch1, switch2, switch3 */
+        map = <
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3)
+        >;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "KSCAN";
+
+        input-gpios
+            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* encoder knop P0.31 */
+            , <&gpio0  2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 1     P0.02 */
+            , <&gpio0  3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 2     P0.03 */
+            , <&gpio0 28 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>   /* switch 3     P0.28 */
+            ;
+    };
+
+    encoder: encoder {
+        compatible = "alps,ec11";
+        label = "ENCODER";
+        a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* CLK P0.29 */
+        b-gpios = <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  /* DT  P0.30 */
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder>;
+        triggers-per-rotation = <20>;
+    };
+};
