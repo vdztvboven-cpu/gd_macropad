@@ -1,4 +1,7 @@
-Gekozen pinnen:
-
-S1 = P0.02, S2 = P0.03, S3 = P0.28
-Encoder CLK = P0.29, DT = P0.30, SW = P0.31
+ * Switch 1  → P0.17
+ * Switch 2  → P0.20
+ * Switch 3  → P0.22
+ *
+ * Encoder A (CLK) → P1.00
+ * Encoder B (DT)  → P0.11
+ * Encoder SW      → P0.24
