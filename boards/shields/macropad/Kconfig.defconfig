@@ -1,7 +1,7 @@
 if SHIELD_MIJN_MACROPAD
 
 config ZMK_KEYBOARD_NAME
-    default "MijnMacropad"
+    default "Macropad"
 
 config EC11
     default y
