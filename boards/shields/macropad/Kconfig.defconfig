@@ -1,4 +1,4 @@
-if SHIELD_MIJN_MACROPAD
+if SHIELD_MACROPAD
 
 config ZMK_KEYBOARD_NAME
     default "Macropad"
