@@ -14,7 +14,7 @@
                 &kp UP          /* switch 3 = Pijl omhoog */
             >;
 
-            /* encoder draaien = volume omhoog/omlaag (werkt in GD) */
+            /* encoder draaien = volume omhoog/omlaag */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
